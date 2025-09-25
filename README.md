@@ -1,5 +1,7 @@
 # API de Ventas (FastAPI + SQLite)
 
+![API Banner](https://via.placeholder.com/800x200/1e40af/ffffff?text=FastAPI+%2B+SQLite+API)
+
 ## Descripción
 API REST para gestionar clientes, productos, ventas y detalles de ventas. Incluye reportes de productos más vendidos y clientes con más ventas. La raíz `/` redirige a la documentación `/docs` (Swagger UI).
 
@@ -154,6 +156,8 @@ Los reportes incluyen totales agregados (unidades y monto). Usa `limit` para lim
 - Error al instalar dependencias en 3.13: usa `py -3.12 -m pip install -r requirements.txt`.
 
 ## Licencia
+
+![MIT License](https://via.placeholder.com/400x100/28a745/ffffff?text=MIT+License)
 
 # Released under MIT License
 
