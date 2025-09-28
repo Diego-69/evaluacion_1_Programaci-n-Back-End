@@ -1,6 +1,6 @@
 # API de Ventas (FastAPI + SQLite)
 
-![API Banner](https://via.placeholder.com/800x200/1e40af/ffffff?text=FastAPI+%2B+SQLite+API)
+![Banner API de Ventas](https://via.placeholder.com/800x200/1e40af/ffffff?text=API+de+Ventas)
 
 ## Descripción
 API REST para gestionar clientes, productos, ventas y detalles de ventas. Incluye reportes de productos más vendidos y clientes con más ventas. La raíz `/` redirige a la documentación `/docs` (Swagger UI).
@@ -267,7 +267,7 @@ Usa `POST /detalles` para añadir un producto más a la venta:
 
 ## Licencia
 
-![MIT License](https://via.placeholder.com/400x100/28a745/ffffff?text=MIT+License)
+Publicado bajo la MIT License.
 
 # Released under MIT License
 
