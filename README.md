@@ -1,6 +1,10 @@
 # API de Ventas (FastAPI + SQLite)
 
-![Banner API de Ventas](https://via.placeholder.com/800x200/1e40af/ffffff?text=API+de+Ventas)
+<p align="center">
+  <img src="./logo-teal.png" alt="Logotipo FastAPI" height="120" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="./SQLite370.svg.png" alt="Logotipo SQLite" height="120" />
+</p>
 
 ## Descripción
 API REST para gestionar clientes, productos, ventas y detalles de ventas. Incluye reportes de productos más vendidos y clientes con más ventas. La raíz `/` redirige a la documentación `/docs` (Swagger UI).
