@@ -273,7 +273,7 @@ Usa `POST /detalles` para añadir un producto más a la venta:
 
 Publicado bajo la MIT License.
 
-<p align="center">
+<p align="left">
   <img src="./MIT_logo.svg.png" alt="Logotipo MIT" height="80" />
 </p>
 
