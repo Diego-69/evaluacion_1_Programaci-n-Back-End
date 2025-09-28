@@ -127,6 +127,116 @@ Ejemplo cuerpo PUT `/detalles/{id}` (campos opcionales; al actualizar se recalcu
 
 Los reportes incluyen totales agregados (unidades y monto). Usa `limit` para limitar filas.
 
+## Tutorial paso a paso: Cómo usar el CRUD
+
+### Paso 1: Iniciar el servidor
+```cmd
+py -3.12 -m uvicorn main:app --reload
+```
+Abre http://127.0.0.1:8000/docs en tu navegador.
+
+### Paso 2: Crear un Cliente
+1. En Swagger UI, busca `POST /clientes`
+2. Haz clic en "Try it out"
+3. Pega este JSON y ejecuta:
+```json
+{
+  "nombre": "Juan Pérez",
+  "email": "juan@example.com",
+  "rut": "12345678-9"
+}
+```
+4. **Resultado esperado:** Cliente creado con `id: 1`
+
+### Paso 3: Crear Productos
+Repite con `POST /productos` usando estos ejemplos:
+
+**Producto 1:**
+```json
+{
+  "nombre": "Mouse Gamer",
+  "categoria": "Periféricos",
+  "precio": 15000
+}
+```
+
+**Producto 2:**
+```json
+{
+  "nombre": "Teclado Mecánico",
+  "categoria": "Periféricos",
+  "precio": 25000
+}
+```
+
+### Paso 4: Crear una Venta con Detalles
+Usa `POST /ventas` con este JSON:
+```json
+{
+  "cliente_id": 1,
+  "detalles": [
+    {"producto_id": 1, "precio": 15000, "descuento": 0, "cantidad": 2},
+    {"producto_id": 2, "precio": 25000, "descuento": 2000, "cantidad": 1}
+  ]
+}
+```
+**El sistema calculará automáticamente:** `total = (15000 × 2) + (23000 × 1) = 53000`
+
+### Paso 5: Verificar la Venta
+1. Usa `GET /ventas/1` para ver la venta completa
+2. Usa `GET /ventas/1/detalles` para ver solo los detalles
+3. **Verifica que el total sea 53000**
+
+### Paso 6: Actualizar Información
+**Modificar cliente:**
+```json
+{
+  "nombre": "Juan Carlos Pérez",
+  "email": "juancarlos@example.com"
+}
+```
+
+**Modificar cantidad en un detalle (PUT /detalles/1):**
+```json
+{
+  "cantidad": 3
+}
+```
+**¡Ve a `GET /ventas/1` y verifica que el total cambió automáticamente!**
+
+### Paso 7: Probar los Reportes
+1. `GET /reportes/productos-mas-vendidos?limit=5`
+2. `GET /reportes/clientes-mas-ventas?limit=5`
+
+### Paso 8: Crear Detalles Independientes
+Usa `POST /detalles` para añadir un producto más a la venta:
+```json
+{
+  "venta_id": 1,
+  "producto_id": 1,
+  "precio": 15000,
+  "descuento": 1000,
+  "cantidad": 1
+}
+```
+**El total de la venta se actualizará automáticamente.**
+
+### Paso 9: Eliminar y Verificar
+1. `DELETE /detalles/3` (elimina el último detalle creado)
+2. `GET /ventas/1` → Verifica que el total se recalculó
+3. Intenta `DELETE /clientes/1` → **Fallará porque tiene ventas asociadas** (integridad referencial)
+
+### ✅ Checklist de pruebas completadas:
+- [ ] Cliente creado y actualizado
+- [ ] Productos creados y listados
+- [ ] Venta creada con múltiples detalles
+- [ ] Total calculado automáticamente
+- [ ] Detalles modificados y total recalculado
+- [ ] Reportes funcionando
+- [ ] Eliminación con validación de integridad
+
+### 🎯 **¡Felicidades! Has probado todo el CRUD funcional.**
+
 ## Parámetros comunes
 - `skip` y `limit` están disponibles en varios listados (por ejemplo, `/clientes`, `/productos`, `/ventas`, `/detalles`).
 
